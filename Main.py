@@ -6,7 +6,6 @@ def main():
     alunos = []
     cursos = {}
 
-    
     des = True
 
     while des == True:
@@ -16,17 +15,16 @@ def main():
 
         match op:
             case "0":
+                print("Finalizando...")
                 des = False
             case "1":
                 menu.cadastrar(alunos,cursos)
             case "2":
                 menu.mostrarLista(alunos)
             case "3":
-                #menu.atualizarCadastro()
-                pass
+                menu.atualizarCadastro(alunos,cursos)
             case "4":
                 menu.excluirCadastro(alunos)
-                
 
 if __name__ == "__main__":
     main()

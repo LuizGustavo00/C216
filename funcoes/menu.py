@@ -6,8 +6,6 @@ def criar():
     print("4 - Excluir cadastro")
     print("0 - Sair")
 
-
-
 def cadastrar(alunos,cursos):
     print("Cadastro de novo aluno\n")
 
@@ -23,7 +21,7 @@ def cadastrar(alunos,cursos):
     aluno = {"nome": nome, "email": email, "curso": curso, "matricula": curso+str(cursos[curso])}
 
     alunos.append(aluno)
-
+    print("Aluno cadastrado com sucesso\n")
 
 def mostrarLista(alunos):
     if len(alunos) == 0:
@@ -39,25 +37,38 @@ def mostrarLista(alunos):
             print(f"Matrícula: {aluno['matricula']}")
             print("-" * 30)
 
-def atualizarCadastro(alunos):
+def atualizarCadastro(alunos, cursos):
     print("Atualizar cadastro\n")
     matricula = input("Informe a matricula: ").upper()
+
     for aluno in alunos:
         if aluno["matricula"] == matricula:
-            print("Aluno encontrado")
+            print("Aluno encontrado\n")
             print(f"Nome: {aluno['nome']}")
             print(f"Email: {aluno['email']}")
             print(f"Curso: {aluno['curso']}")
             print(f"Matrícula: {aluno['matricula']}")
 
-            print("Informe os novos dados: \n")
-            nome = input("Digite o nome: ")
-            email = input("Digite o email: ")
-            curso = input("Digite o curso: ").upper()
-            matricula = curso+str(cursos[curso])
+            print("Informe os novos dados:\n")
+
+            aluno['nome'] = input("Digite o nome: ")
+            aluno['email'] = input("Digite o email: ")
+
+            novo_curso = input("Digite o curso: ").upper()
             
-        else:
-            print ("aluno não encontrado")
+            if novo_curso != aluno['curso']:
+                if novo_curso not in cursos:
+                    cursos[novo_curso] = 0
+
+                cursos[novo_curso] += 1
+
+                aluno['curso'] = novo_curso
+                aluno['matricula'] = novo_curso + str(cursos[novo_curso])
+
+            print("Cadastro atualizado com sucesso\n")
+            return
+
+    print("Aluno não encontrado\n")
 
 def excluirCadastro(alunos):
     print("Excluir cadastro\n")
@@ -66,7 +77,7 @@ def excluirCadastro(alunos):
 
     for aluno in alunos:
         if aluno["matricula"] == matricula:
-            print("Aluno encontrado")
+            print("Aluno encontrado\n")
             print(f"Nome: {aluno['nome']}")
             print(f"Matrícula: {aluno['matricula']}")
 
@@ -74,10 +85,10 @@ def excluirCadastro(alunos):
 
         if conf == 's':
             alunos.remove(aluno)
-            print("Aluno excluido com sucesso")
+            print("Aluno excluido com sucesso\n")
         elif conf == 'n':
             print("Exclusão cancelada")
             print("-" * 10)
             return
         else:
-            print("Opção invalida")
+            print("Opção invalida\n")

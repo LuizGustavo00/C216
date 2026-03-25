@@ -39,8 +39,25 @@ def mostrarLista(alunos):
             print(f"Matrícula: {aluno['matricula']}")
             print("-" * 30)
 
-#def atualizarCadastro():
+def atualizarCadastro(alunos):
+    print("Atualizar cadastro\n")
+    matricula = input("Informe a matricula: ").upper()
+    for aluno in alunos:
+        if aluno["matricula"] == matricula:
+            print("Aluno encontrado")
+            print(f"Nome: {aluno['nome']}")
+            print(f"Email: {aluno['email']}")
+            print(f"Curso: {aluno['curso']}")
+            print(f"Matrícula: {aluno['matricula']}")
 
+            print("Informe os novos dados: \n")
+            nome = input("Digite o nome: ")
+            email = input("Digite o email: ")
+            curso = input("Digite o curso: ").upper()
+            matricula = curso+str(cursos[curso])
+            
+        else:
+            print ("aluno não encontrado")
 
 def excluirCadastro(alunos):
     print("Excluir cadastro\n")

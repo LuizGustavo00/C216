@@ -1,3 +1,5 @@
+from funcoes import config
+
 def criar():
     print("Bem vindo ao menu!\n")
     print("1 - Cadastrar novo aluno")
@@ -22,6 +24,7 @@ def cadastrar(alunos,cursos):
 
     alunos.append(aluno)
     print("Aluno cadastrado com sucesso\n")
+    config.limpaTela()
 
 def mostrarLista(alunos):
     if len(alunos) == 0:
@@ -36,6 +39,7 @@ def mostrarLista(alunos):
             print(f"Curso: {aluno['curso']}")
             print(f"Matrícula: {aluno['matricula']}")
             print("-" * 30)
+    config.limpaTela()
 
 def atualizarCadastro(alunos, cursos):
     print("Atualizar cadastro\n")
@@ -69,6 +73,7 @@ def atualizarCadastro(alunos, cursos):
             return
 
     print("Aluno não encontrado\n")
+    config.limpaTela()
 
 def excluirCadastro(alunos):
     print("Excluir cadastro\n")
@@ -81,14 +86,18 @@ def excluirCadastro(alunos):
             print(f"Nome: {aluno['nome']}")
             print(f"Matrícula: {aluno['matricula']}")
 
-        conf = input("Confirmar exclusão? (s/n) ").lower()
+            conf = input("Confirmar exclusão? (s/n) ").lower()
 
-        if conf == 's':
-            alunos.remove(aluno)
-            print("Aluno excluido com sucesso\n")
-        elif conf == 'n':
-            print("Exclusão cancelada")
-            print("-" * 10)
-            return
+            if conf == 's':
+                alunos.remove(aluno)
+                print("Aluno excluido com sucesso\n")
+            elif conf == 'n':
+                print("Exclusão cancelada")
+                print("-" * 10)
+                return
+            else:
+                print("Opção invalida\n")
         else:
-            print("Opção invalida\n")
+            print("Aluno não encontrado\n")
+    
+    config.limpaTela()

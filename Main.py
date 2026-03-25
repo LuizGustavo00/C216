@@ -3,8 +3,8 @@ from funcoes import config
 
 def main():
 
-    alunos = []
-    cursos = {}
+    alunos = [] #lista de alunos
+    cursos = {} #dicionario de cursos
 
     des = True
 
@@ -15,8 +15,7 @@ def main():
 
         match op:
             case "0":
-                print("Finalizando...")
-                des = False
+                config.finalizar(des)
             case "1":
                 menu.cadastrar(alunos,cursos)
             case "2":

@@ -1,5 +1,5 @@
-from funcoes import menu
-from funcoes import config
+import funcoes.menu as menu
+import funcoes.config as config
 
 def main():
 
@@ -15,7 +15,7 @@ def main():
 
         match op:
             case "0":
-                config.finalizar(des)
+                des = config.finalizar(des)
             case "1":
                 menu.cadastrar(alunos,cursos)
             case "2":
